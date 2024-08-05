@@ -1,0 +1,26 @@
+
+spring:
+  application:
+    name: aldia's keep
+  datasource:
+    url: jdbc:mysql://localhost:3306/aldias_keep_db?createDatabaseIfNotExist=true
+    username: ${usernameDB}
+    password: ${passwordDB}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate.ddl-auto: create
+    generate-ddl: true
+    show-sql: false
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
+  level:
+    root: "info"
+    org.springframework.web: "info"
+    org.hibernate: "error"
