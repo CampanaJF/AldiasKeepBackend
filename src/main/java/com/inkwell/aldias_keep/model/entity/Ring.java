@@ -1,9 +1,10 @@
 package com.inkwell.aldias_keep.model.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,8 +12,12 @@ import jakarta.persistence.Table;
 public class Ring {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ringId;
+    @Column(name = "upgrade_level")
+    private Integer upgradeLevel;
+
+    @ManyToOne
+    @JoinColumn(name = "ring_id")
+    private BaseRing baseRing;
 
     private String name;
 
@@ -24,12 +29,23 @@ public class Ring {
 
     private String effect;
 
-    public Integer getRingId() {
-        return ringId;
+    public Ring() {
     }
 
-    public void setRingId(Integer ringId) {
-        this.ringId = ringId;
+    public Integer getUpgradeLevel() {
+        return upgradeLevel;
+    }
+
+    public void setUpgradeLevel(Integer upgradeLevel) {
+        this.upgradeLevel = upgradeLevel;
+    }
+
+    public BaseRing getBaseRing() {
+        return baseRing;
+    }
+
+    public void setBaseRing(BaseRing baseRing) {
+        this.baseRing = baseRing;
     }
 
     public String getName() {
