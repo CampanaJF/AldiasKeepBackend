@@ -1,34 +1,26 @@
 package com.inkwell.aldias_keep.model.entity;
 
-import com.inkwell.aldias_keep.model.enumerate.AttackType;
 import com.inkwell.aldias_keep.model.enumerate.ScalingGrade;
-import com.inkwell.aldias_keep.model.enumerate.WeaponCategory;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "weapons")
-@IdClass(EquipmentId.class)
-public class Weapon extends Equipment{
+public class Weapon {
 
     @Id
-    private Integer id;
+    @Column(name = "upgrade_level")
+    private Integer upgradeLevel;
 
-    @Id
-    private Integer upgrade;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "weapon_category")
-    private WeaponCategory weaponCategory;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "attack_type")
-    private AttackType attackType;
+    @ManyToOne
+    @JoinColumn(name = "weapon_id")
+    private BaseWeapon baseWeapon;
 
     @Column(name = "physical_atk")
     private Integer physicalAtk;
@@ -50,18 +42,6 @@ public class Weapon extends Equipment{
 
     @Column(name = "bleed_effect")
     private Integer bleedEffect;
-
-    @Column(name = "counter_strength")
-    private Integer counterStrength;
-
-    @Column(name = "poise_damage")
-    private Integer poiseDamage;
-
-    @Column(name = "shot_range")
-    private Integer shotRange;
-
-    @Column(name = "cast_speed")
-    private Integer castSpeed;
 
     @Column(name = "physical_reduction")
     private Integer physicalReduction;
@@ -90,8 +70,6 @@ public class Weapon extends Equipment{
     @Column(name = "curse_reduction")
     private Integer curseReduction;
 
-    private Integer stability;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "strength_bonus")
     private ScalingGrade strengthBonus;
@@ -116,36 +94,20 @@ public class Weapon extends Equipment{
     @Column(name = "dark_bonus")
     private ScalingGrade darkBonus;
 
-    public Integer getId() {
-        return id;
+    public Integer getUpgradeLevel() {
+        return upgradeLevel;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUpgradeLevel(Integer upgradeLevel) {
+        this.upgradeLevel = upgradeLevel;
     }
 
-    public Integer getUpgrade() {
-        return upgrade;
+    public BaseWeapon getBaseWeapon() {
+        return baseWeapon;
     }
 
-    public void setUpgrade(Integer upgrade) {
-        this.upgrade = upgrade;
-    }
-
-    public WeaponCategory getWeaponCategory() {
-        return weaponCategory;
-    }
-
-    public void setWeaponCategory(WeaponCategory weaponCategory) {
-        this.weaponCategory = weaponCategory;
-    }
-
-    public AttackType getAttackType() {
-        return attackType;
-    }
-
-    public void setAttackType(AttackType attackType) {
-        this.attackType = attackType;
+    public void setBaseWeapon(BaseWeapon baseWeapon) {
+        this.baseWeapon = baseWeapon;
     }
 
     public Integer getPhysicalAtk() {
@@ -202,38 +164,6 @@ public class Weapon extends Equipment{
 
     public void setBleedEffect(Integer bleedEffect) {
         this.bleedEffect = bleedEffect;
-    }
-
-    public Integer getCounterStrength() {
-        return counterStrength;
-    }
-
-    public void setCounterStrength(Integer counterStrength) {
-        this.counterStrength = counterStrength;
-    }
-
-    public Integer getPoiseDamage() {
-        return poiseDamage;
-    }
-
-    public void setPoiseDamage(Integer poiseDamage) {
-        this.poiseDamage = poiseDamage;
-    }
-
-    public Integer getShotRange() {
-        return shotRange;
-    }
-
-    public void setShotRange(Integer shotRange) {
-        this.shotRange = shotRange;
-    }
-
-    public Integer getCastSpeed() {
-        return castSpeed;
-    }
-
-    public void setCastSpeed(Integer castSpeed) {
-        this.castSpeed = castSpeed;
     }
 
     public Integer getPhysicalReduction() {
@@ -306,14 +236,6 @@ public class Weapon extends Equipment{
 
     public void setCurseReduction(Integer curseReduction) {
         this.curseReduction = curseReduction;
-    }
-
-    public Integer getStability() {
-        return stability;
-    }
-
-    public void setStability(Integer stability) {
-        this.stability = stability;
     }
 
     public ScalingGrade getStrengthBonus() {
