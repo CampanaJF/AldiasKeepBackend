@@ -8,15 +8,15 @@ public class EquipmentId implements Serializable {
 
     private Integer id;
 
-    private Integer upgradeLevel;
+    private Integer upgrade;
 
     public EquipmentId( ) {
 
     }
 
-    public EquipmentId(Integer id, Integer upgradeLevel) {
+    public EquipmentId(Integer id, Integer upgrade) {
         this.id = id;
-        this.upgradeLevel = upgradeLevel;
+        this.upgrade = upgrade;
     }
 
     public Integer getId() {
@@ -27,23 +27,23 @@ public class EquipmentId implements Serializable {
         this.id = id;
     }
 
-    public Integer getUpgradeLevel() {
-        return upgradeLevel;
+    public Integer getUpgrade() {
+        return upgrade;
     }
 
-    public void setUpgradeLevel(Integer upgradeLevel) {
-        this.upgradeLevel = upgradeLevel;
+    public void setUpgrade(Integer upgrade) {
+        this.upgrade = upgrade;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof EquipmentId that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(upgradeLevel, that.upgradeLevel);
+        return Objects.equals(id, that.id) && Objects.equals(upgrade, that.upgrade);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, upgradeLevel);
+        return Objects.hash(id, upgrade);
     }
 }

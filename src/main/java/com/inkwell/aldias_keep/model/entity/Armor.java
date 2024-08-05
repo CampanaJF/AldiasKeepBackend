@@ -1,6 +1,7 @@
 package com.inkwell.aldias_keep.model.entity;
 
 import com.inkwell.aldias_keep.model.enumerate.EquipmentSlot;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -17,34 +18,47 @@ public class Armor extends Equipment {
     private Integer id;
 
     @Id
-    private Integer upgradeLevel;
+    private Integer upgrade;
 
+    @Column(name = "physical_def")
     private Integer physicalDef;
 
+    @Column(name = "strike_def")
     private Integer strikeDef;
 
+    @Column(name = "slash_def")
     private Integer slashDef;
 
+    @Column(name = "thrust_def")
     private Integer thrustDef;
 
+    @Column(name = "magic_def")
     private Integer magicDef;
 
+    @Column(name = "fire_def")
     private Integer fireDef;
 
+    @Column(name = "lightning_def")
     private Integer lightningDef;
 
+    @Column(name = "dark_def")
     private Integer darkDef;
 
     private Integer poise;
 
+    @Column(name = "poison_resistance")
     private Integer poisonResistance;
 
+    @Column(name = "bleed_resistance")
     private Integer bleedResistance;
 
+    @Column(name = "petrify_resistance")
     private Integer petrifyResistance;
 
+    @Column(name = "curse_resistance")
     private Integer curseResistance;
 
+    @Column(name = "attribute_bonus_physical_defence")
     private Integer attributeBonusPhysicalDefence;
 
     @Enumerated(EnumType.STRING)
@@ -58,12 +72,12 @@ public class Armor extends Equipment {
         this.id = id;
     }
 
-    public Integer getUpgradeLevel() {
-        return upgradeLevel;
+    public Integer getUpgrade() {
+        return upgrade;
     }
 
-    public void setUpgradeLevel(Integer upgradeLevel) {
-        this.upgradeLevel = upgradeLevel;
+    public void setUpgrade(Integer upgrade) {
+        this.upgrade= upgrade;
     }
 
     public Integer getPhysicalDef() {
