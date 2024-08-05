@@ -6,22 +6,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "armors")
-@IdClass(EquipmentId.class)
-public class Armor extends Equipment {
+public class Armor {
 
     @Id
-    private Integer id;
+    @Column(name = "upgrade_level")
+    private Integer upgradeLevel;
 
-    @Id
-    private Integer upgrade;
+    @ManyToOne
+    @JoinColumn(name = "armor_id")
+    private BaseArmor baseArmor;
 
     @Column(name = "physical_def")
     private Integer physicalDef;
@@ -67,27 +66,20 @@ public class Armor extends Equipment {
     @Enumerated(EnumType.STRING)
     private EquipmentSlot equipmentSlot;
 
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name = "armor_id", referencedColumnName="id"),
-            @JoinColumn(name="armor_upgrade", referencedColumnName="upgrade")
-    })
-    private ArmorSet armorSet;
-
-    public Integer getId() {
-        return id;
+    public Integer getUpgradeLevel() {
+        return upgradeLevel;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUpgradeLevel(Integer upgradeLevel) {
+        this.upgradeLevel = upgradeLevel;
     }
 
-    public Integer getUpgrade() {
-        return upgrade;
+    public BaseArmor getBaseArmor() {
+        return baseArmor;
     }
 
-    public void setUpgrade(Integer upgrade) {
-        this.upgrade= upgrade;
+    public void setBaseArmor(BaseArmor baseArmor) {
+        this.baseArmor = baseArmor;
     }
 
     public Integer getPhysicalDef() {
