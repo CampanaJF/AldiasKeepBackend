@@ -1,21 +1,18 @@
 package com.inkwell.aldias_keep.model.entity;
 
-import com.inkwell.aldias_keep.model.enumerate.EquipmentSlot;
+import com.inkwell.aldias_keep.model.enumerate.ArmorType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "armors")
+@Table(name = "armor_sets")
 @IdClass(EquipmentId.class)
-public class Armor extends Equipment {
+public class ArmorSet {
 
     @Id
     private Integer id;
@@ -61,18 +58,8 @@ public class Armor extends Equipment {
     @Column(name = "curse_resistance")
     private Integer curseResistance;
 
-    @Column(name = "attribute_bonus_physical_defence")
-    private Integer attributeBonusPhysicalDefence;
-
     @Enumerated(EnumType.STRING)
-    private EquipmentSlot equipmentSlot;
-
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name = "armor_id", referencedColumnName="id"),
-            @JoinColumn(name="armor_upgrade", referencedColumnName="upgrade")
-    })
-    private ArmorSet armorSet;
+    private ArmorType armorType;
 
     public Integer getId() {
         return id;
@@ -87,7 +74,7 @@ public class Armor extends Equipment {
     }
 
     public void setUpgrade(Integer upgrade) {
-        this.upgrade= upgrade;
+        this.upgrade = upgrade;
     }
 
     public Integer getPhysicalDef() {
@@ -194,19 +181,11 @@ public class Armor extends Equipment {
         this.curseResistance = curseResistance;
     }
 
-    public Integer getAttributeBonusPhysicalDefence() {
-        return attributeBonusPhysicalDefence;
+    public ArmorType getArmorType() {
+        return armorType;
     }
 
-    public void setAttributeBonusPhysicalDefence(Integer attributeBonusPhysicalDefence) {
-        this.attributeBonusPhysicalDefence = attributeBonusPhysicalDefence;
-    }
-
-    public EquipmentSlot getEquipmentSlot() {
-        return equipmentSlot;
-    }
-
-    public void setEquipmentSlot(EquipmentSlot equipmentSlot) {
-        this.equipmentSlot = equipmentSlot;
+    public void setArmorType(ArmorType armorType) {
+        this.armorType = armorType;
     }
 }
