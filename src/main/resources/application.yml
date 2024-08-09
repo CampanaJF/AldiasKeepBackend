@@ -3,14 +3,14 @@ spring:
   application:
     name: aldia's keep
   datasource:
-    url: jdbc:mysql://localhost:3306/aldias_keep_db?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/aldias_keep_db
     username: ${usernameDB}
     password: ${passwordDB}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-    hibernate.ddl-auto: create
+    hibernate.ddl-auto: validate
     generate-ddl: true
-    show-sql: false
+    show-sql: true
     defer-datasource-initialization: true
   sql:
     init:
