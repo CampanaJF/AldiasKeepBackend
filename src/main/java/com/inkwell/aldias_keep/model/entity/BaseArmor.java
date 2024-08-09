@@ -5,11 +5,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "base_armor")
 public class BaseArmor extends Equipment {
 
@@ -25,35 +33,4 @@ public class BaseArmor extends Equipment {
 
     private Integer poise;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public List<Armor> getArmor() {
-        return armor;
-    }
-
-    public void setArmor(List<Armor> armor) {
-        this.armor = armor;
-    }
-
-    public List<ArmorSet> getArmorSets() {
-        return armorSets;
-    }
-
-    public void setArmorSets(List<ArmorSet> armorSets) {
-        this.armorSets = armorSets;
-    }
-
-    public Integer getPoise() {
-        return poise;
-    }
-
-    public void setPoise(Integer poise) {
-        this.poise = poise;
-    }
 }
