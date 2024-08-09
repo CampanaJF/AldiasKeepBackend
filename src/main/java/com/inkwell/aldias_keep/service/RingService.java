@@ -1,11 +1,14 @@
 package com.inkwell.aldias_keep.service;
 
-import com.inkwell.aldias_keep.model.entity.BaseRing;
-import com.inkwell.aldias_keep.model.entity.Ring;
+import com.inkwell.aldias_keep.model.dto.RingProjection;
+import com.inkwell.aldias_keep.model.dto.RingsProjection;
+
+import java.util.List;
 
 public interface RingService {
 
-    BaseRing getBaseRing(Integer ringId);
+    List<RingsProjection> getRings();
 
-    Ring getRing(Integer ringId);
+    List<RingProjection> getRingDetails(Integer id);
+
 }
