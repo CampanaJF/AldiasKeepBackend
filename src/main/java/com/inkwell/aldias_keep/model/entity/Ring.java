@@ -1,7 +1,10 @@
 package com.inkwell.aldias_keep.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -12,25 +15,27 @@ import jakarta.persistence.Table;
 public class Ring {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "ring_id")
+    private Integer ringId;
+
     @Column(name = "upgrade_level")
     private Integer upgradeLevel;
 
     @ManyToOne
-    @JoinColumn(name = "ring_id")
+    @JoinColumn(name = "base_ring_id")
+    @JsonIgnore
     private BaseRing baseRing;
-
-    private String name;
 
     private Integer durability;
 
-    private String description;
-
     private Double weight;
 
+    @Column(columnDefinition="TEXT")
     private String effect;
 
-    public Ring() {
-    }
+    @Column(columnDefinition="TEXT")
+    private String location;
 
     public Integer getUpgradeLevel() {
         return upgradeLevel;
@@ -48,28 +53,12 @@ public class Ring {
         this.baseRing = baseRing;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getDurability() {
         return durability;
     }
 
     public void setDurability(Integer durability) {
         this.durability = durability;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Double getWeight() {
@@ -86,5 +75,21 @@ public class Ring {
 
     public void setEffect(String effect) {
         this.effect = effect;
+    }
+
+    public Integer getRingId() {
+        return ringId;
+    }
+
+    public void setRingId(Integer ringId) {
+        this.ringId = ringId;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

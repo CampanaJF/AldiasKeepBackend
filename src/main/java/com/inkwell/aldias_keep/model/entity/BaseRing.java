@@ -14,11 +14,12 @@ import java.util.List;
 public class BaseRing {
 
     @Id
-    @Column(name = "ring_id")
+    @Column(name = "base_ring_id")
     private Integer id;
 
     private String name;
 
+    @Column(columnDefinition="TEXT")
     private String description;
 
     @OneToMany(mappedBy = "baseRing")
@@ -55,4 +56,5 @@ public class BaseRing {
     public void setRings(List<Ring> rings) {
         this.rings = rings;
     }
+
 }

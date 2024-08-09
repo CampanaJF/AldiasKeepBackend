@@ -5,21 +5,27 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "armors")
+@Table(name = "armor")
 public class Armor {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "armor_id")
+    private Integer armorId;
+
     @Column(name = "upgrade_level")
     private Integer upgradeLevel;
 
     @ManyToOne
-    @JoinColumn(name = "armor_id")
+    @JoinColumn(name = "base_armor_id")
     private BaseArmor baseArmor;
 
     @Column(name = "physical_def")
@@ -45,8 +51,6 @@ public class Armor {
 
     @Column(name = "dark_def")
     private Integer darkDef;
-
-    private Integer poise;
 
     @Column(name = "poison_resistance")
     private Integer poisonResistance;
@@ -144,14 +148,6 @@ public class Armor {
 
     public void setDarkDef(Integer darkDef) {
         this.darkDef = darkDef;
-    }
-
-    public Integer getPoise() {
-        return poise;
-    }
-
-    public void setPoise(Integer poise) {
-        this.poise = poise;
     }
 
     public Integer getPoisonResistance() {

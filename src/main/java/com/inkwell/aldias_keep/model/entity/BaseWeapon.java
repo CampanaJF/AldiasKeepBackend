@@ -18,7 +18,7 @@ import java.util.List;
 public class BaseWeapon extends Equipment {
 
     @Id
-    @Column(name = "weapon_id")
+    @Column(name = "base_weapon_id")
     private Integer id;
 
     @OneToMany(mappedBy = "baseWeapon")

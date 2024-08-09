@@ -5,6 +5,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,11 +17,15 @@ import jakarta.persistence.Table;
 public class Weapon {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "weapon_id")
+    private Integer weaponId;
+
     @Column(name = "upgrade_level")
     private Integer upgradeLevel;
 
     @ManyToOne
-    @JoinColumn(name = "weapon_id")
+    @JoinColumn(name = "base_weapon_id")
     private BaseWeapon baseWeapon;
 
     @Column(name = "physical_atk")

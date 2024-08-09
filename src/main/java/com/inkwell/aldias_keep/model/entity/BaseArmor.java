@@ -10,21 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "base_armors")
+@Table(name = "base_armor")
 public class BaseArmor extends Equipment {
 
     @Id
-    @Column(name = "armor_id")
+    @Column(name = "base_armor_id")
     private Integer id;
 
     @OneToMany(mappedBy = "baseArmor")
-    private List<Armor> armors = new ArrayList<>();
+    private List<Armor> armor = new ArrayList<>();
 
     @OneToMany(mappedBy = "baseArmor")
     private List<ArmorSet> armorSets = new ArrayList<>();
 
     private Integer poise;
-
 
     public Integer getId() {
         return id;
@@ -34,12 +33,12 @@ public class BaseArmor extends Equipment {
         this.id = id;
     }
 
-    public List<Armor> getArmors() {
-        return armors;
+    public List<Armor> getArmor() {
+        return armor;
     }
 
-    public void setArmors(List<Armor> armors) {
-        this.armors = armors;
+    public void setArmor(List<Armor> armor) {
+        this.armor = armor;
     }
 
     public List<ArmorSet> getArmorSets() {

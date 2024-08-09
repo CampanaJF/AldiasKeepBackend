@@ -1,5 +1,6 @@
 package com.inkwell.aldias_keep.model.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -9,10 +10,12 @@ public abstract class Equipment {
 
     private Integer durability;
 
+    @Column(columnDefinition="TEXT")
     private String description;
 
     private Double weight;
 
+    @Column(columnDefinition="TEXT")
     private String effect;
 
     private Integer strengthRequirement;
