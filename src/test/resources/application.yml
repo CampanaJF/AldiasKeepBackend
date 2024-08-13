@@ -8,7 +8,7 @@ hibernate:
 spring:
   sql:
     init:
-      data-locations: classpath:insert-data.sql
+      data-locations: classpath:insert.sql
   datasource:
     url: jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1
   jpa:
