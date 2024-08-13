@@ -21,7 +21,7 @@ public class RingServiceImpl implements RingService {
     }
 
     @Override
-    public List<RingProjection> getRingDetails(Integer id) {
+    public RingProjection getRingDetails(Integer id) {
         return baseRingRepository.findAllById(id);
     }
 }

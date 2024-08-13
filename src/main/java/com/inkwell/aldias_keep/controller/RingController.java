@@ -26,7 +26,7 @@ public class RingController {
     }
 
     @GetMapping("/{ringId}")
-    public ResponseEntity<List<RingProjection>> getRings(@PathVariable("ringId") Integer ringId){
+    public ResponseEntity<RingProjection> getRings(@PathVariable("ringId") Integer ringId){
 
         return ResponseEntity.ok(ringService.getRingDetails(ringId));
     }

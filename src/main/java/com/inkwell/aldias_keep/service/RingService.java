@@ -9,6 +9,6 @@ public interface RingService {
 
     List<RingsProjection> getRings();
 
-    List<RingProjection> getRingDetails(Integer id);
+    RingProjection getRingDetails(Integer id);
 
 }

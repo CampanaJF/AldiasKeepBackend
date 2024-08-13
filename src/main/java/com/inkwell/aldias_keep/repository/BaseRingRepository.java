@@ -15,5 +15,5 @@ public interface BaseRingRepository extends JpaRepository<BaseRing, Integer> {
     @Query(value = "SELECT name, img, base_ring_id as id FROM base_rings",nativeQuery = true)
     List<RingsProjection> getRings();
 
-    List<RingProjection> findAllById(Integer id);
+    RingProjection findAllById(Integer id);
 }
