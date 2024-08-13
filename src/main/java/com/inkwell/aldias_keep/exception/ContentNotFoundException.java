@@ -1,8 +1,8 @@
 package com.inkwell.aldias_keep.exception;
 
-public class ContentUnavailableException extends BaseException{
+public class ContentNotFoundException extends BaseException{
 
-    public ContentUnavailableException(String message) {
+    public ContentNotFoundException(String message) {
         super(message);
     }
 

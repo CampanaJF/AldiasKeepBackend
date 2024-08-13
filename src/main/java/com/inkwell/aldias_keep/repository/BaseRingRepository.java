@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface BaseRingRepository extends JpaRepository<BaseRing, Integer> {
@@ -15,5 +16,7 @@ public interface BaseRingRepository extends JpaRepository<BaseRing, Integer> {
     @Query(value = "SELECT name, img, base_ring_id as id FROM base_rings",nativeQuery = true)
     List<RingsProjection> getRings();
 
-    RingProjection findAllById(Integer id);
+    Optional<RingProjection> getRingById(Integer id);
+
+//    Optional<RingProjection> findAllById(Integer id);
 }
