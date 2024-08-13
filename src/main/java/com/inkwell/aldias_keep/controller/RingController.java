@@ -1,5 +1,6 @@
 package com.inkwell.aldias_keep.controller;
 
+import com.inkwell.aldias_keep.controller.api.RingApi;
 import com.inkwell.aldias_keep.exception.ContentNotFoundException;
 import com.inkwell.aldias_keep.model.dto.RingProjection;
 import com.inkwell.aldias_keep.model.dto.RingsProjection;
@@ -16,18 +17,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/rings")
 @AllArgsConstructor
-public class RingController {
+public class RingController implements RingApi {
 
     private final RingService ringService;
 
+    @Override
     @GetMapping()
     public ResponseEntity<List<RingsProjection>> getRings(){
 
         return ResponseEntity.ok(ringService.getRings());
     }
 
+    @Override
     @GetMapping("/{ringId}")
-    public ResponseEntity<RingProjection> getRings(@PathVariable("ringId") Integer ringId)
+    public ResponseEntity<RingProjection> getRing(@PathVariable("ringId") Integer ringId)
             throws ContentNotFoundException {
 
         return ResponseEntity.ok(ringService.getRingDetails(ringId));
